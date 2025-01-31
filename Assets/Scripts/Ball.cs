@@ -23,7 +23,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Peg"))
         {
             // Apply random spin based on collision force
-            float spinForce = Random.Range(-5f, 5f); // Adjust value for desired effect
+            float spinForce = Random.Range(-1f, 1f); // Adjust value for desired effect
             rb.AddTorque(spinForce, ForceMode2D.Impulse);
         }
     }
