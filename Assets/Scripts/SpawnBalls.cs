@@ -11,6 +11,13 @@ public class SpawnBalls : MonoBehaviour
     {
         betButton.onClick.AddListener(() =>  SpawnBall());
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnBall();
+        }
+    }
     public void SpawnBall()
     {
         GameObject ballObject = ObjectPooling.Instance.GetObject(ballPrefab);
