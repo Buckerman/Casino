@@ -23,6 +23,13 @@ public class SpawnBalls : MonoBehaviour
         {
             SpawnBall();
         }
+        int activeBallsCount = GetActiveBallsCount();
+
+        if (activeBallsCount == 0)
+        {
+            // Unlock panel if no balls are active
+            Observer.Instance.Notify(EventName.TogglePanel, true);
+        }
     }
     public void SpawnBall()
     {
@@ -37,6 +44,21 @@ public class SpawnBalls : MonoBehaviour
             {
                 Observer.Instance.Notify(EventName.SubstractMoney, betAmount);
             }
+
+            Observer.Instance.Notify(EventName.TogglePanel, false);
         }
+    }
+    private int GetActiveBallsCount()
+    {
+        GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
+        int count = 0;
+        foreach (GameObject ball in balls)
+        {
+            if (ball.activeInHierarchy)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }

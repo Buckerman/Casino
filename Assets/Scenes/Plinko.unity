@@ -3237,7 +3237,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -6318,10 +6318,10 @@ MonoBehaviour:
   switchMode: {fileID: 1388071741}
   betAmountText: {fileID: 700959327}
   betButton: {fileID: 84876966}
-  divideButton: {fileID: 0}
-  multiplyButton: {fileID: 0}
-  dropdownRisk: {fileID: 0}
-  dropdownRows: {fileID: 0}
+  divideButton: {fileID: 422159646}
+  multiplyButton: {fileID: 606834025}
+  dropdownRisk: {fileID: 643936495}
+  dropdownRows: {fileID: 2089468734}
 --- !u!114 &2001888761
 MonoBehaviour:
   m_ObjectHideFlags: 0

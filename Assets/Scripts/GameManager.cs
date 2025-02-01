@@ -82,6 +82,5 @@ public class GameManager : MonoBehaviour
         multiplyButton.interactable = (bool)data;
         dropdownRisk.interactable = (bool)data;
         dropdownRows.interactable = (bool)data;
-        betButton.interactable = (bool)data;
     }
 }
