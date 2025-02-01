@@ -7,6 +7,7 @@ public class Wallet : MonoBehaviour
 {
     private TextMeshProUGUI walletText;
     private float money;
+    public float Money { get => money;}
 
     private void Awake()
     {
@@ -44,5 +45,10 @@ public class Wallet : MonoBehaviour
     private void UpdateWalletText()
     {
         walletText.text = string.Format(CultureInfo.InvariantCulture, "${0:0.00}", money);
+    }
+    private void OnDestroy()
+    {
+        Observer.Instance.RemoveObserver(EventName.AddMoney, AddMoney);
+        Observer.Instance.RemoveObserver(EventName.SubstractMoney, SubstractMoney);
     }
 }
