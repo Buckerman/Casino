@@ -11,6 +11,10 @@ public class Ball : MonoBehaviour
     public void Initialize(RectTransform gameArea)
     {
         plinkoArea = gameArea;
+
+        float newScale = 0.5f * (8f / PlinkoGenerator.Instance.NumRows);
+        transform.localScale = new Vector3(newScale, newScale, newScale);
+
         Vector2 spawnPositionUI = new Vector2(Random.Range(-25f, 25f), plinkoArea.rect.height / 2 + 100f);
 
         Vector3 worldPos = plinkoArea.TransformPoint(spawnPositionUI);

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlinkoGenerator : MonoBehaviour
 {
     public static PlinkoGenerator Instance { get; private set; }
+    public int NumRows { get => numRows; set => numRows = value; }
 
     [SerializeField] private GameObject pegPrefab;
     [SerializeField] private TMP_Dropdown dropDownRows;
@@ -35,17 +36,17 @@ public class PlinkoGenerator : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        numRows = int.Parse(dropDownRows.options[dropDownRows.value].text);
+        NumRows = int.Parse(dropDownRows.options[dropDownRows.value].text);
 
         float areaWidth = plinkoArea.rect.width;
         float areaHeight = plinkoArea.rect.height;
 
         float topY = areaHeight / 2;
 
-        float horizontalSpacing = areaWidth / (numRows + 1);
+        float horizontalSpacing = areaWidth / (NumRows + 1);
 
         float verticalSpacing = Mathf.Sqrt(3) / 2 * horizontalSpacing;
-        for (int row = 0; row < numRows; row++)
+        for (int row = 0; row < NumRows; row++)
         {
             int numPegs = row + 3;
 
@@ -55,7 +56,7 @@ public class PlinkoGenerator : MonoBehaviour
             float rowStartY = topY - (row * verticalSpacing);
 
             // Calculate the new scale based on the number of rows
-            float newScale = 0.5f * (8f / numRows); // 0.5 scale for 8 rows, reduced as rows increase
+            float newScale = 0.5f * (8f / NumRows); // 0.5 scale for 8 rows, reduced as rows increase
             for (int col = 0; col < numPegs; col++)
             {
                 Vector2 pegPosition = new Vector2(
