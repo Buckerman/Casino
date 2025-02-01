@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class SpawnBalls : MonoBehaviour
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] private Button betButton;
     [SerializeField] private RectTransform plinkoArea;
+    [SerializeField] private TMP_InputField betAmountText;
 
     private void Start()
     {
@@ -23,5 +25,11 @@ public class SpawnBalls : MonoBehaviour
         GameObject ballObject = ObjectPooling.Instance.GetObject(ballPrefab);
         Ball ball = ballObject.GetComponent<Ball>();
         ball.Initialize(plinkoArea);
+
+        float betAmount;
+        if (float.TryParse(betAmountText.text, out betAmount))
+        {
+            Observer.Instance.Notify(EventName.SubstractMoney, betAmount);
+        }
     }
 }
