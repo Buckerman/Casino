@@ -65,14 +65,7 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Box"))
         {
             gameObject.SetActive(false);
-
-            // Parse both value of box and the bet amount into float numbers
-            TextMeshProUGUI textComponent = collision.gameObject.GetComponentInChildren<TextMeshProUGUI>();
-            if (float.TryParse(textComponent.text.Replace("x",""), out float boxValue) &&
-                float.TryParse(GameManager.Instance.BetAmountText.text, out float betAmount))
-            {
-                Observer.Instance.Notify(EventName.AddMoney, betAmount * boxValue);
-            }
+            collision.gameObject.GetComponent<PayoutBox>().Score();
         }
     }
 }
