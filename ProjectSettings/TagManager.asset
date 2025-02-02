@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Peg
   - Ball
+  - Box
   layers:
   - Default
   - TransparentFX

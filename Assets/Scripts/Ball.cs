@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -30,9 +31,17 @@ public class Ball : MonoBehaviour
             float spinForce = Random.Range(-0.1f, 0.1f); // Adjust value for desired effect
             rb.AddTorque(spinForce, ForceMode2D.Impulse);
         }
-    }
-    private void OnBecameInvisible()
-    {
-        gameObject.SetActive(false);
+        if (collision.gameObject.CompareTag("Box"))
+        {
+            gameObject.SetActive(false);
+
+            // Parse both value of box and the bet amount into float numbers
+            TextMeshProUGUI textComponent = collision.gameObject.GetComponentInChildren<TextMeshProUGUI>();
+            if (float.TryParse(textComponent.text, out float boxValue) &&
+                float.TryParse(GameManager.Instance.BetAmountText.text, out float betAmount))
+            {
+                Observer.Instance.Notify(EventName.AddMoney, betAmount * boxValue);
+            }
+        }
     }
 }
