@@ -1,3 +1,4 @@
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public Button BetButton { get => betButton; }
     public TMP_InputField BetAmountText { get => betAmountText; }
-    public TMP_Dropdown DropdownRisk { get => dropdownRisk;}
+    public TMP_Dropdown DropdownRisk { get => dropdownRisk; }
 
     [SerializeField] private Wallet wallet;
 
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
         }
         else
         {
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         float betAmount;
-        if (float.TryParse(BetAmountText.text, out betAmount))
+        if (float.TryParse(BetAmountText.text, out betAmount) && betAmount >= 0.1f)
         {
             BetButton.interactable = betAmount <= wallet.Money;
         }
@@ -53,9 +55,9 @@ public class GameManager : MonoBehaviour
         {
             betAmount /= 2;
 
-            if (betAmount < 0.01f)
+            if (betAmount < 0.1f)
             {
-                betAmount = 0.01f;
+                betAmount = 0.1f;
             }
 
             BetAmountText.text = betAmount.ToString("F2");

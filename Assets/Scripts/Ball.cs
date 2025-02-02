@@ -68,7 +68,7 @@ public class Ball : MonoBehaviour
 
             // Parse both value of box and the bet amount into float numbers
             TextMeshProUGUI textComponent = collision.gameObject.GetComponentInChildren<TextMeshProUGUI>();
-            if (float.TryParse(textComponent.text, out float boxValue) &&
+            if (float.TryParse(textComponent.text.Replace("x",""), out float boxValue) &&
                 float.TryParse(GameManager.Instance.BetAmountText.text, out float betAmount))
             {
                 Observer.Instance.Notify(EventName.AddMoney, betAmount * boxValue);

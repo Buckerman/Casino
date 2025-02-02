@@ -3109,6 +3109,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 1055078052}
   - {fileID: 941044818}
   - {fileID: 870262313}
   - {fileID: 1922274522}
@@ -3304,7 +3305,7 @@ MonoBehaviour:
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
-  m_Text: 0,00
+  m_Text: 0.00
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
@@ -3726,53 +3727,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &841555673
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 841555675}
-  - component: {fileID: 841555676}
-  m_Layer: 0
-  m_Name: PayoutGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &841555675
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841555673}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &841555676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841555673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c6f960bc15af74ab61514d86bfd88c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  payoutPrefab: {fileID: 1475676868742932206, guid: 038ca4f59f24a05489a307aa1b05e3f5, type: 3}
-  dropDownRisk: {fileID: 643936495}
-  plinkoArea: {fileID: 870262313}
 --- !u!1 &847517967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3822,6 +3776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 870262313}
   - component: {fileID: 870262315}
+  - component: {fileID: 870262316}
   m_Layer: 5
   m_Name: PlinkoArea
   m_TagString: Untagged
@@ -3856,6 +3811,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870262312}
   m_CullTransparentMesh: 1
+--- !u!114 &870262316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870262312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c6f960bc15af74ab61514d86bfd88c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  payoutPrefab: {fileID: 1475676868742932206, guid: 038ca4f59f24a05489a307aa1b05e3f5, type: 3}
+  dropDownRisk: {fileID: 643936495}
 --- !u!1 &897934882
 GameObject:
   m_ObjectHideFlags: 0
@@ -3913,7 +3882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "0,00\u200B"
+  m_text: "0.00\u200B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4090,12 +4059,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055078051}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4862.4062}
+  m_LocalScale: {x: 54.026737, y: 54.026737, z: 54.026737}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 692020569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1055078053
 MonoBehaviour:
@@ -6505,6 +6474,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 870262316}
+        m_TargetAssemblyTypeName: PayoutGenerator, Assembly-CSharp
+        m_MethodName: GeneratePayout
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &2089468735
 MonoBehaviour:
@@ -6804,6 +6785,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 2108417496}
   - {fileID: 2001888758}
-  - {fileID: 1055078052}
-  - {fileID: 841555675}
   - {fileID: 692020569}
