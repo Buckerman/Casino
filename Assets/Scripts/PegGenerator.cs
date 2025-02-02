@@ -1,9 +1,9 @@
 using TMPro;
 using UnityEngine;
 
-public class PlinkoGenerator : MonoBehaviour
+public class PegGenerator : MonoBehaviour
 {
-    public static PlinkoGenerator Instance { get; private set; }
+    public static PegGenerator Instance { get; private set; }
     public int NumRows { get => numRows; set => numRows = value; }
 
     [SerializeField] private GameObject pegPrefab;
@@ -25,10 +25,10 @@ public class PlinkoGenerator : MonoBehaviour
 
     void Start()
     {
-        GeneratePlinkoPyramid();
+        GeneratePegPyramid();
     }
 
-    public void GeneratePlinkoPyramid()
+    public void GeneratePegPyramid()
     {
         // Clear previous pegs
         foreach (Transform child in transform)

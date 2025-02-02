@@ -15,7 +15,7 @@ public class Ball : MonoBehaviour
     {
         plinkoArea = gameArea;
 
-        float newScale = 0.5f * (8f / PlinkoGenerator.Instance.NumRows);
+        float newScale = 0.5f * (8f / PegGenerator.Instance.NumRows);
         transform.localScale = new Vector3(newScale, newScale, newScale);
 
         Vector2 spawnPositionUI = new Vector2(Random.Range(-25f, 25f), plinkoArea.rect.height / 2 + 100f);
