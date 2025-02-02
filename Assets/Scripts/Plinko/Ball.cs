@@ -61,6 +61,7 @@ public class Ball : MonoBehaviour
             // Apply random spin based on collision force
             float spinForce = Random.Range(-0.1f, 0.1f); // Adjust value for desired effect
             rb.AddTorque(spinForce, ForceMode2D.Impulse);
+            collision.gameObject.GetComponent<Peg>().PegAnimation();
         }
         if (collision.gameObject.CompareTag("Box"))
         {
