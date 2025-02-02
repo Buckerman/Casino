@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public Button BetButton { get => betButton; }
     public TMP_InputField BetAmountText { get => betAmountText; }
+    public TMP_Dropdown DropdownRisk { get => dropdownRisk;}
 
     [SerializeField] private Wallet wallet;
 
@@ -80,7 +81,7 @@ public class GameManager : MonoBehaviour
         betAmountText.interactable = (bool)data;
         divideButton.interactable = (bool)data;
         multiplyButton.interactable = (bool)data;
-        dropdownRisk.interactable = (bool)data;
+        DropdownRisk.interactable = (bool)data;
         dropdownRows.interactable = (bool)data;
     }
 }
