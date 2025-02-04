@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI; // Dodaj tê liniê, aby korzystaæ z komponentu Image
 
 public class PayoutGenerator : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class PayoutGenerator : MonoBehaviour
 
     public void GeneratePayout()
     {
-        // Clear previous payouts
+        // Usuñ poprzednie boxy
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
@@ -44,17 +45,13 @@ public class PayoutGenerator : MonoBehaviour
 
         float topY = areaHeight / 2;
         float lastRowY = topY - ((numRows - 1) * verticalSpacing);
-
-        // Place payout boxes slightly below last peg row
         float payoutY = lastRowY - (verticalSpacing * 0.6f);
 
         float payoutScale = 1.0f * (8f / numRows);
 
         for (int i = 0; i < numRows + 1; i++)
         {
-            // Shift each payout by half a spacing to align between pegs
             float xOffset = horizontalSpacing / 2;
-
             Vector2 payoutPosition = new Vector2(
                 (-areaWidth / 2) + (i * horizontalSpacing) + xOffset,
                 payoutY
@@ -64,6 +61,36 @@ public class PayoutGenerator : MonoBehaviour
             payoutBox.transform.SetParent(plinkoArea, false);
             payoutBox.GetComponent<RectTransform>().anchoredPosition = payoutPosition;
             payoutBox.transform.localScale = new Vector3(payoutScale, payoutScale, payoutScale);
+
+            Color payoutColor = GetPayoutColor(i, numRows);
+            payoutBox.GetComponent<Image>().color = payoutColor;
         }
+    }
+
+    private Color GetPayoutColor(int index, int total)
+    {
+        Color startColor, endColor;
+        float middleIndex = total / 2f;
+
+        if (total % 2 == 0)
+        {
+            startColor = Color.yellow;
+            endColor = Color.red;
+        }
+        else
+        {
+            startColor = new Color(1.0f, 0.6f, 0.0f);
+            endColor = Color.red;
+
+            // Make sure **two** middle payout boxes start with `startColor`
+            if (index == Mathf.FloorToInt(middleIndex) || index == Mathf.CeilToInt(middleIndex))
+                return startColor;
+        }
+
+        // Obliczenie odleg³oœci od œrodka (normalizacja do zakresu 0-1)
+        float distanceFromCenter = Mathf.Abs(index - middleIndex) / middleIndex;
+
+        // Interpolacja kolorów bazuj¹c na odleg³oœci od œrodka
+        return Color.Lerp(startColor, endColor, distanceFromCenter);
     }
 }
