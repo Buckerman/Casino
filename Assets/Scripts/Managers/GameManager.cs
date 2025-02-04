@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject switchMode;
     [SerializeField] private TMP_InputField betAmountText;
+    [SerializeField] private TMP_InputField betCountText;
     [SerializeField] private Button betButton;
     [SerializeField] private Button divideButton;
     [SerializeField] private Button multiplyButton;
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
     {
         switchMode.GetComponent<ToggleSwitch>().enabled = (bool)data;
         betAmountText.interactable = (bool)data;
+        betCountText.interactable = (bool)data;
         divideButton.interactable = (bool)data;
         multiplyButton.interactable = (bool)data;
         DropdownRisk.interactable = (bool)data;

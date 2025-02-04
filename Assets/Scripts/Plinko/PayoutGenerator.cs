@@ -67,7 +67,7 @@ public class PayoutGenerator : MonoBehaviour
             payoutBox.GetComponent<Image>().color = payoutColor;
 
             float multiplier = GetPayoutMultiplier(i, numRows);
-            payoutBox.GetComponentInChildren<TextMeshProUGUI>().text = multiplier % 1 == 0 ? multiplier.ToString("F0") + "x" : multiplier.ToString("F1") + "x";
+            payoutBox.GetComponentInChildren<TextMeshProUGUI>().text = multiplier % 1 == 0 ? multiplier.ToString("F0"): multiplier.ToString("F1");
         }
     }
 

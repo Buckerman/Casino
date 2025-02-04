@@ -29,15 +29,18 @@ public class Ball : MonoBehaviour
         {
             case "Low":
                 sr.color = Color.yellow;
-                difficultyOdds = 0.5f;
+                difficultyOdds = 0.85f;
+                xBiasStrength = 1f;
                 break;
             case "Medium":
                 sr.color = new Color(1f, 0.647f, 0f);
-                difficultyOdds = 0.70f;
+                difficultyOdds = 0.9f;
+                xBiasStrength = 1f;
                 break;
             case "High":
                 sr.color = Color.red;
                 difficultyOdds = 0.95f;
+                xBiasStrength = 1.1f;
                 break;
         }
         #region
@@ -59,7 +62,7 @@ public class Ball : MonoBehaviour
     }
 
     // You can adjust this value in the Inspector to control the pull strength
-    private float xBiasStrength = 1f;
+    private float xBiasStrength;
     private float difficultyOdds;
     void OnCollisionEnter2D(Collision2D collision)
     {
