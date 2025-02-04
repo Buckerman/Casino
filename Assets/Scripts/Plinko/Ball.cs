@@ -29,12 +29,15 @@ public class Ball : MonoBehaviour
         {
             case "Low":
                 sr.color = Color.yellow;
+                difficultyOdds = 0.5f;
                 break;
             case "Medium":
                 sr.color = new Color(1f, 0.647f, 0f);
+                difficultyOdds = 0.70f;
                 break;
             case "High":
                 sr.color = Color.red;
+                difficultyOdds = 0.95f;
                 break;
         }
         #region
@@ -56,7 +59,8 @@ public class Ball : MonoBehaviour
     }
 
     // You can adjust this value in the Inspector to control the pull strength
-    public float xBiasStrength = 1f;
+    private float xBiasStrength = 1f;
+    private float difficultyOdds;
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Peg"))
@@ -77,7 +81,7 @@ public class Ball : MonoBehaviour
             float directionBias = horizontalPosition > 0 ? -1f : 1f;
 
             // Apply force toward the center of the Plinko area with direction bias and adjustable strength
-            rb.AddForce(new Vector2(directionBias * xBiasStrength, 0), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(directionBias * xBiasStrength, 0) * difficultyOdds, ForceMode2D.Impulse);
 
             // Apply random X velocity shift (simulating randomness and dampening)
             float randomXShift = Random.Range(-0.5f, 0.5f);
