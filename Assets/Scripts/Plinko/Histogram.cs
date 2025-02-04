@@ -1,18 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Histogram : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Observer.Instance.AddObserver(EventName.AddHistory, AddHistory);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AddHistory(object data)
     {
-        
+        throw new NotImplementedException();
     }
 }

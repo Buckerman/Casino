@@ -8,6 +8,7 @@ public static class EventName
     public static readonly string AddMoney = "AddMoney";
     public static readonly string SubstractMoney = "SubstractMoney";
     public static readonly string TogglePanel = "TogglePanel";
+    public static readonly string AddHistory = "AddHistory";
 }
 
 public class Observer : MonoBehaviour //do rozdzielenia zaleznosci miedzy skryptami, wywolywanie zmian w UI, zliczania, questy

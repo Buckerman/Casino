@@ -58,9 +58,28 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Peg"))
         {
-            // Apply random spin based on collision force
-            float spinForce = Random.Range(-0.1f, 0.1f); // Adjust value for desired effect
+            // Apply small spin for randomness
+            float spinForce = Random.Range(-0.1f, 0.1f);
             rb.AddTorque(spinForce, ForceMode2D.Impulse);
+
+            // Get collision contact point & normal
+            ContactPoint2D contact = collision.GetContact(0);
+            Vector2 normal = contact.normal;
+            Vector2 velocity = rb.velocity;
+
+            // Calculate impact angle
+            float impactAngle = Vector2.Angle(velocity, normal);
+
+            // Reduce Y velocity on impact (vertical damping)
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.7f); // Adjust 0.7f if needed
+
+            // Determine center bias force
+            float biasDirection = transform.position.x > 0 ? -1f : 1f;
+            float biasStrength = Mathf.Clamp(impactAngle / 90f, 0.1f, 0.5f);
+
+            // Apply force toward center
+            rb.AddForce(new Vector2(biasDirection * biasStrength, 0), ForceMode2D.Impulse);
+
             collision.gameObject.GetComponent<Peg>().PegAnimation();
         }
         if (collision.gameObject.CompareTag("Box"))

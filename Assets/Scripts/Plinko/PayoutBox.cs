@@ -13,6 +13,7 @@ public class PayoutBox : MonoBehaviour
             float.TryParse(GameManager.Instance.BetAmountText.text, out float betAmount))
         {
             Observer.Instance.Notify(EventName.AddMoney, betAmount * boxValue);
+            Observer.Instance.Notify(EventName.AddHistory, boxValue);
         }
         PayoutAnimation();
     }
