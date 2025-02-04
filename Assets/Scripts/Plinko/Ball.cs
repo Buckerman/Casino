@@ -54,31 +54,35 @@ public class Ball : MonoBehaviour
 
         transform.position = worldPos;
     }
+
+    // You can adjust this value in the Inspector to control the pull strength
+    public float xBiasStrength = 1f;
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Peg"))
         {
+            // Convert Plinko area position from Canvas space to World space
+            Vector2 plinkoCenter = RectTransformUtility.WorldToScreenPoint(Camera.main, plinkoArea.position);
+            plinkoCenter = Camera.main.ScreenToWorldPoint(plinkoCenter);
+
             // Apply small spin for randomness
             float spinForce = Random.Range(-0.1f, 0.1f);
             rb.AddTorque(spinForce, ForceMode2D.Impulse);
 
-            // Get collision contact point & normal
-            ContactPoint2D contact = collision.GetContact(0);
-            Vector2 normal = contact.normal;
-            Vector2 velocity = rb.velocity;
+            // Apply damping on the Y velocity (vertical damping) for bounce
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.9f);
 
-            // Calculate impact angle
-            float impactAngle = Vector2.Angle(velocity, normal);
+            // Determine the horizontal direction (left or right)
+            float horizontalPosition = transform.position.x - plinkoCenter.x;
+            float directionBias = horizontalPosition > 0 ? -1f : 1f;
 
-            // Reduce Y velocity on impact (vertical damping)
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.7f); // Adjust 0.7f if needed
+            // Apply force toward the center of the Plinko area with direction bias and adjustable strength
+            rb.AddForce(new Vector2(directionBias * xBiasStrength, 0), ForceMode2D.Impulse);
 
-            // Determine center bias force
-            float biasDirection = transform.position.x > 0 ? -1f : 1f;
-            float biasStrength = Mathf.Clamp(impactAngle / 90f, 0.1f, 0.5f);
-
-            // Apply force toward center
-            rb.AddForce(new Vector2(biasDirection * biasStrength, 0), ForceMode2D.Impulse);
+            // Apply random X velocity shift (simulating randomness and dampening)
+            float randomXShift = Random.Range(-0.5f, 0.5f);
+            rb.velocity = new Vector2(rb.velocity.x + randomXShift, rb.velocity.y);
+            rb.velocity = new Vector2(rb.velocity.x * 0.5f, rb.velocity.y);
 
             collision.gameObject.GetComponent<Peg>().PegAnimation();
         }
