@@ -69,9 +69,15 @@ public class ToggleSwitch : MonoBehaviour, IPointerClickHandler
         if (_previousValue != CurrentValue)
         {
             if (CurrentValue)
+            {
                 onToggleOn?.Invoke();
+                Observer.Instance.Notify(EventName.AutoPlay, true);
+            }
             else
+            {
                 onToggleOff?.Invoke();
+                Observer.Instance.Notify(EventName.AutoPlay, false);
+            }
         }
 
         if (_animateSliderCoroutine != null)

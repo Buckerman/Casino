@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -6,9 +7,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public Button BetButton { get => betButton; }
+    public Button BetButton { get => betButton; set => betButton = value; }
     public TMP_InputField BetAmountText { get => betAmountText; }
     public TMP_Dropdown DropdownRisk { get => dropdownRisk; }
+    public TMP_InputField BetCountText { get => betCountText; }
 
     [SerializeField] private Wallet wallet;
 
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropdownRisk;
     [SerializeField] private TMP_Dropdown dropdownRows;
 
+    private bool isBetLocked = false;
+    public bool autoPlay;
     private void Awake()
     {
         if (Instance == null)
@@ -36,14 +40,28 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Observer.Instance.AddObserver(EventName.TogglePanel, TogglePanel);
+        Observer.Instance.AddObserver(EventName.AutoPlay, AutoPlay);
+    }
+
+    private void AutoPlay(object data)
+    {
+        autoPlay = (bool)data;
     }
 
     private void Update()
     {
+        if (isBetLocked) return;
+
+        ToggleBetButton();
+    }
+    private void ToggleBetButton()
+    {
         float betAmount;
-        if (float.TryParse(BetAmountText.text, out betAmount) && betAmount >= 0.1f)
+        int betCount;
+        if (float.TryParse(BetAmountText.text, out betAmount) && betAmount >= 0.1f &&
+            int.TryParse(BetCountText.text, out betCount) && betCount > 0)
         {
-            BetButton.interactable = betAmount <= wallet.Money;
+            BetButton.interactable = betAmount <= wallet.Money && (betAmount * betCount) <= wallet.Money;
         }
         else
         {
@@ -81,11 +99,16 @@ public class GameManager : MonoBehaviour
     private void TogglePanel(object data)
     {
         switchMode.GetComponent<ToggleSwitch>().enabled = (bool)data;
-        betAmountText.interactable = (bool)data;
-        betCountText.interactable = (bool)data;
+        BetAmountText.interactable = (bool)data;
+        BetCountText.interactable = (bool)data;
         divideButton.interactable = (bool)data;
         multiplyButton.interactable = (bool)data;
         DropdownRisk.interactable = (bool)data;
         dropdownRows.interactable = (bool)data;
+    }
+    public void LockBetButton(bool lockState)
+    {
+        isBetLocked = lockState;
+        if (lockState) BetButton.interactable = false;
     }
 }
