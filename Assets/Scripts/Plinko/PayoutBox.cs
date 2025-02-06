@@ -31,7 +31,7 @@ public class PayoutBox : MonoBehaviour
         // Parse both value of box and the bet amount into float numbers
         TextMeshProUGUI textComponent = GetComponentInChildren<TextMeshProUGUI>();
         if (float.TryParse(textComponent.text.Replace("x", ""), out float boxValue) &&
-            float.TryParse(GameManager.Instance.BetAmountText.text, out float betAmount))
+            float.TryParse(PlinkoManager.Instance.BetAmountText.text, out float betAmount))
         {
             Observer.Instance.Notify(EventName.AddMoney, betAmount * boxValue);
             Observer.Instance.Notify(EventName.AddHistory, new PayoutData(GetComponent<Image>().color, boxValue.ToString()));

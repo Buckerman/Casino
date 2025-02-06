@@ -1850,7 +1850,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2001888760}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: DivideBet
         m_Mode: 1
@@ -2736,7 +2736,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2001888760}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: DoubleBet
         m_Mode: 1
@@ -2976,7 +2976,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2001888763}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PayoutGenerator, Assembly-CSharp
         m_MethodName: GeneratePayout
         m_Mode: 1
@@ -4042,8 +4042,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1055078052}
   - component: {fileID: 1055078053}
+  - component: {fileID: 1055078054}
+  - component: {fileID: 1055078055}
   m_Layer: 0
-  m_Name: PegGenerator
+  m_Name: PlinkoGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4078,6 +4080,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pegPrefab: {fileID: 2731746514844820317, guid: fba0d635b5205154c9a26479a83bdec6, type: 3}
   dropDownRows: {fileID: 2089468734}
+  plinkoArea: {fileID: 870262313}
+--- !u!114 &1055078054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055078051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c6f960bc15af74ab61514d86bfd88c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  payoutPrefab: {fileID: 1475676868742932206, guid: 038ca4f59f24a05489a307aa1b05e3f5, type: 3}
+  dropDownRisk: {fileID: 643936495}
+  plinkoArea: {fileID: 870262313}
+--- !u!114 &1055078055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055078051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7eb411abe6a9349b88719a08522d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 7612371297992822604, guid: c6eb24811a440794bab7a7f2dc5354fb, type: 3}
   plinkoArea: {fileID: 870262313}
 --- !u!1 &1131809421
 GameObject:
@@ -6129,6 +6160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927417868}
   - component: {fileID: 1927417869}
+  - component: {fileID: 1927417870}
   m_Layer: 5
   m_Name: Histogram
   m_TagString: Untagged
@@ -6169,6 +6201,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 0, y: 0, z: 0, w: 0}
   m_Softness: {x: 0, y: 0}
+--- !u!114 &1927417870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927417867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3552a4ad0f3419f42a7209abd5afd6a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  payoutBoxPrefab: {fileID: 1475676868742932206, guid: 038ca4f59f24a05489a307aa1b05e3f5, type: 3}
+  histogramArea: {fileID: 1927417868}
 --- !u!1 &2000462872
 GameObject:
   m_ObjectHideFlags: 0
@@ -6314,12 +6360,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2001888758}
-  - component: {fileID: 2001888760}
-  - component: {fileID: 2001888763}
-  - component: {fileID: 2001888757}
-  - component: {fileID: 2001888762}
-  - component: {fileID: 2001888759}
+  - component: {fileID: 2001888765}
+  - component: {fileID: 2001888764}
+  - component: {fileID: 2001888766}
   - component: {fileID: 2001888761}
+  - component: {fileID: 2001888759}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6327,20 +6372,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2001888757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2001888756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7eb411abe6a9349b88719a08522d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 7612371297992822604, guid: c6eb24811a440794bab7a7f2dc5354fb, type: 3}
-  plinkoArea: {fileID: 870262313}
 --- !u!4 &2001888758
 Transform:
   m_ObjectHideFlags: 0
@@ -6368,28 +6399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f55aea331a3a5f429159c7234b54cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2001888760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2001888756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5276f2356d82240b0081af752029a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallet: {fileID: 1922274525}
-  switchMode: {fileID: 1388071741}
-  betAmountText: {fileID: 700959327}
-  betCountText: {fileID: 1689646560}
-  betButton: {fileID: 84876966}
-  divideButton: {fileID: 422159646}
-  multiplyButton: {fileID: 606834025}
-  dropdownRisk: {fileID: 643936495}
-  dropdownRows: {fileID: 2089468734}
-  autoPlay: 0
 --- !u!114 &2001888761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6402,7 +6411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7ebbbb97555174b9d32fc645f598da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2001888762
+--- !u!114 &2001888764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6411,12 +6420,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2001888756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3552a4ad0f3419f42a7209abd5afd6a4, type: 3}
+  m_Script: {fileID: 11500000, guid: ce874511c1d32c844b4413268f892078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  payoutBoxPrefab: {fileID: 1475676868742932206, guid: 038ca4f59f24a05489a307aa1b05e3f5, type: 3}
-  histogramArea: {fileID: 1927417868}
---- !u!114 &2001888763
+  wallet: {fileID: 1922274525}
+  switchMode: {fileID: 1388071741}
+  betAmountText: {fileID: 700959327}
+  betCountText: {fileID: 1689646560}
+  betButton: {fileID: 84876966}
+  divideButton: {fileID: 422159646}
+  multiplyButton: {fileID: 606834025}
+  dropdownRisk: {fileID: 643936495}
+  dropdownRows: {fileID: 2089468734}
+  autoPlay: 0
+--- !u!114 &2001888765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6425,12 +6442,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2001888756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c6f960bc15af74ab61514d86bfd88c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e5276f2356d82240b0081af752029a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  payoutPrefab: {fileID: 1475676868742932206, guid: 038ca4f59f24a05489a307aa1b05e3f5, type: 3}
-  dropDownRisk: {fileID: 643936495}
-  plinkoArea: {fileID: 870262313}
+--- !u!114 &2001888766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001888756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c029c9a258cdc1418a8cf02b146f2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2089468732
 GameObject:
   m_ObjectHideFlags: 0
@@ -6555,7 +6581,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2001888763}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PayoutGenerator, Assembly-CSharp
         m_MethodName: GeneratePayout
         m_Mode: 1

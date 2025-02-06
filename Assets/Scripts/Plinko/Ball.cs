@@ -22,7 +22,7 @@ public class Ball : MonoBehaviour
         Vector3 worldPos = plinkoArea.TransformPoint(spawnPositionUI);
         worldPos.z = 0f;
 
-        var risk = GameManager.Instance.DropdownRisk;
+        var risk = PlinkoManager.Instance.DropdownRisk;
 
         //This solution prevent from switching option order
         switch (risk.options[risk.value].text)

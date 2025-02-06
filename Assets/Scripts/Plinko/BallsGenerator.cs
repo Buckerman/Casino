@@ -13,9 +13,9 @@ public class BallsGenerator : MonoBehaviour
 
     private void Start()
     {
-        betButton = GameManager.Instance.BetButton;
-        betAmountText = GameManager.Instance.BetAmountText;
-        betCountText = GameManager.Instance.BetCountText;
+        betButton = PlinkoManager.Instance.BetButton;
+        betAmountText = PlinkoManager.Instance.BetAmountText;
+        betCountText = PlinkoManager.Instance.BetCountText;
 
         betButton.onClick.AddListener(() => SpawnBall());
     }
@@ -31,7 +31,7 @@ public class BallsGenerator : MonoBehaviour
         if (activeBallsCount == 0)
         {
             // Unlock panel if no balls are active
-            GameManager.Instance.LockBetButton(false); // Unlock bet button when no balls are active
+            PlinkoManager.Instance.LockBetButton(false); // Unlock bet button when no balls are active
             Observer.Instance.Notify(EventName.TogglePanel, true);
         }
     }
@@ -42,12 +42,12 @@ public class BallsGenerator : MonoBehaviour
 
         if (!betButton.interactable || betAmount <= 0) return;
 
-        int spawnCount = GameManager.Instance.autoPlay ? betCount : 1;
+        int spawnCount = PlinkoManager.Instance.autoPlay ? betCount : 1;
         float totalBetAmount = betAmount * spawnCount;
 
-        if (GameManager.Instance.autoPlay)
+        if (PlinkoManager.Instance.autoPlay)
         {
-            GameManager.Instance.LockBetButton(true); // Lock bet button when autoplay starts
+            PlinkoManager.Instance.LockBetButton(true); // Lock bet button when autoplay starts
         }
 
         for (int i = 0; i < spawnCount; i++)

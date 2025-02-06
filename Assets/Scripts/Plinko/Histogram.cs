@@ -107,4 +107,8 @@ public class Histogram : MonoBehaviour
     {
         return -histogramArea.rect.height / 2 + BoxSpacing / 2;
     }
+    private void OnDestroy()
+    {
+        Observer.Instance.RemoveObserver(EventName.AddHistory, AddHistory);
+    }
 }
