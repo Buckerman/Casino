@@ -9,14 +9,13 @@ public class PayoutGenerator : MonoBehaviour
 
     [SerializeField] private GameObject payoutPrefab;
     [SerializeField] private TMP_Dropdown dropDownRisk;
-    private RectTransform plinkoArea;
+    [SerializeField] private RectTransform plinkoArea;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            plinkoArea = GetComponent<RectTransform>();
         }
         else
         {
@@ -32,7 +31,7 @@ public class PayoutGenerator : MonoBehaviour
     public void GeneratePayout()
     {
         // Usuñ poprzednie boxy
-        foreach (Transform child in transform)
+        foreach (Transform child in plinkoArea)
         {
             Destroy(child.gameObject);
         }

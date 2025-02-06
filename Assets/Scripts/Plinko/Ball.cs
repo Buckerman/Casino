@@ -43,6 +43,7 @@ public class Ball : MonoBehaviour
                 xBiasStrength = 1.1f;
                 break;
         }
+        //Check by Q order
         #region
         //switch (risk.value)
         //{

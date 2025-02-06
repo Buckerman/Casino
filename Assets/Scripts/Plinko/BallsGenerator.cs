@@ -2,9 +2,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnBalls : MonoBehaviour
+public class BallsGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject ballPrefab;
+    [SerializeField] private GameObject ballPrefab; 
     [SerializeField] private RectTransform plinkoArea;
 
     private Button betButton;
