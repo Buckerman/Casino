@@ -35,12 +35,15 @@ public class PlinkoManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void Start()
     {
         Observer.Instance.AddObserver(EventName.TogglePanel, TogglePanel);
         Observer.Instance.AddObserver(EventName.AutoPlay, AutoPlay);
 
         wallet = Wallet.Instance;
+
+        BetAmountText.onEndEdit.AddListener(FormatBetAmount);
     }
 
     private void AutoPlay(object data)
@@ -51,66 +54,77 @@ public class PlinkoManager : MonoBehaviour
     private void Update()
     {
         if (isBetLocked) return;
-
         ToggleBetButton();
     }
     private void ToggleBetButton()
     {
         float betAmount;
         int betCount;
-        if (float.TryParse(BetAmountText.text, out betAmount) && betAmount >= 0.1f &&
-            int.TryParse(BetCountText.text, out betCount) && betCount > 0)
+
+        bool isValidBetAmount = float.TryParse(BetAmountText.text, out betAmount) && betAmount >= 0.1f;
+        bool isValidBetCount = int.TryParse(BetCountText.text, out betCount) && betCount > 0;
+
+        if (isValidBetAmount)
         {
-            BetButton.interactable = betAmount <= wallet.Money && (betAmount * betCount) <= wallet.Money;
+            if (autoPlay && !isValidBetCount)
+            {
+                BetButton.interactable = false;
+                return;
+            }
+
+            BetButton.interactable = (betAmount * (autoPlay ? betCount : 1)) <= wallet.Money;
         }
         else
         {
             BetButton.interactable = false;
         }
     }
+
     public void DivideBet()
     {
         if (float.TryParse(BetAmountText.text, out float betAmount) && betAmount > 0)
         {
             betAmount /= 2;
-
-            if (betAmount < 0.1f)
-            {
-                betAmount = 0.1f;
-            }
-
+            betAmount = Mathf.Max(betAmount, 0.1f);
             BetAmountText.text = betAmount.ToString("F2");
         }
     }
+
     public void DoubleBet()
     {
         if (float.TryParse(BetAmountText.text, out float betAmount) && betAmount > 0)
         {
             betAmount *= 2;
-
-            if (betAmount > wallet.Money)
-            {
-                betAmount = wallet.Money;
-            }
-
+            betAmount = Mathf.Min(betAmount, wallet.Money);
             BetAmountText.text = betAmount.ToString("F2");
         }
     }
+
     private void TogglePanel(object data)
     {
-        switchMode.GetComponent<ToggleSwitch>().enabled = (bool)data;
-        BetAmountText.interactable = (bool)data;
-        BetCountText.interactable = (bool)data;
-        divideButton.interactable = (bool)data;
-        multiplyButton.interactable = (bool)data;
-        DropdownRisk.interactable = (bool)data;
-        dropdownRows.interactable = (bool)data;
+        bool state = (bool)data;
+        switchMode.GetComponent<ToggleSwitch>().enabled = state;
+        BetAmountText.interactable = state;
+        BetCountText.interactable = state;
+        divideButton.interactable = state;
+        multiplyButton.interactable = state;
+        DropdownRisk.interactable = state;
+        dropdownRows.interactable = state;
     }
+
     public void LockBetButton(bool lockState)
     {
         isBetLocked = lockState;
         if (lockState) BetButton.interactable = false;
     }
+    private void FormatBetAmount(string value)
+    {
+        if (float.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out float betAmount))
+        {
+            BetAmountText.text = betAmount.ToString("F2", CultureInfo.InvariantCulture);
+        }
+    }
+
     private void OnDestroy()
     {
         Observer.Instance.RemoveObserver(EventName.TogglePanel, TogglePanel);

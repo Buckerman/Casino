@@ -1921,8 +1921,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1424629431}
+        m_TargetAssemblyTypeName: PlinkoManager, Assembly-CSharp
         m_MethodName: DivideBet
         m_Mode: 1
         m_Arguments:
@@ -2807,8 +2807,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1424629431}
+        m_TargetAssemblyTypeName: PlinkoManager, Assembly-CSharp
         m_MethodName: DoubleBet
         m_Mode: 1
         m_Arguments:
@@ -5322,8 +5322,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 692020569}
   - {fileID: 1424629432}
+  - {fileID: 692020569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1486714209

@@ -28,5 +28,9 @@ public class GameManager : MonoBehaviour
         {
             sceneManager.LoadScene("Plinko");
         }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            sceneManager.LoadScene("Bjack");
+        }
     }
 }
