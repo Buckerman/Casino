@@ -1,4 +1,3 @@
-using System;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -12,8 +11,6 @@ public class PlinkoManager : MonoBehaviour
     public TMP_Dropdown DropdownRisk { get => dropdownRisk; }
     public TMP_InputField BetCountText { get => betCountText; }
 
-    [SerializeField] private Wallet wallet;
-
     [SerializeField] private GameObject switchMode;
     [SerializeField] private TMP_InputField betAmountText;
     [SerializeField] private TMP_InputField betCountText;
@@ -23,14 +20,15 @@ public class PlinkoManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropdownRisk;
     [SerializeField] private TMP_Dropdown dropdownRows;
 
+    private Wallet wallet;
     private bool isBetLocked = false;
     public bool autoPlay;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            CultureInfo.CurrentCulture = new CultureInfo("en-US");
         }
         else
         {
@@ -41,6 +39,8 @@ public class PlinkoManager : MonoBehaviour
     {
         Observer.Instance.AddObserver(EventName.TogglePanel, TogglePanel);
         Observer.Instance.AddObserver(EventName.AutoPlay, AutoPlay);
+
+        wallet = Wallet.Instance;
     }
 
     private void AutoPlay(object data)

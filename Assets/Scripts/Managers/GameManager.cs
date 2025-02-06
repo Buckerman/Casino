@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static GameManager Instance { get; private set; }
+    [SerializeField] private SceneManagerScript sceneManager;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            sceneManager.LoadScene("Hilo");
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            sceneManager.LoadScene("Plinko");
+        }
     }
 }
