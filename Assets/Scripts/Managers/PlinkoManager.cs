@@ -9,7 +9,7 @@ public class PlinkoManager : MonoBehaviour
     public Button BetButton { get => betButton; set => betButton = value; }
     public TMP_InputField BetAmountText { get => betAmountText; }
     public TMP_Dropdown DropdownRisk { get => dropdownRisk; }
-    public TMP_InputField BetCountText { get => betCountText; }
+    public TMP_InputField BetCountText { get => betCountText; set => betCountText = value; }
 
     [SerializeField] private GameObject switchMode;
     [SerializeField] private TMP_InputField betAmountText;
@@ -61,24 +61,24 @@ public class PlinkoManager : MonoBehaviour
         float betAmount;
         int betCount;
 
-        bool isValidBetAmount = float.TryParse(BetAmountText.text, out betAmount) && betAmount >= 0.1f;
-        bool isValidBetCount = int.TryParse(BetCountText.text, out betCount) && betCount > 0;
+        bool isValidBetAmount = float.TryParse(betAmountText.text, out betAmount) && betAmount >= 0.1f;
+        int.TryParse(betCountText.text, out betCount);
 
-        if (isValidBetAmount)
-        {
-            if (autoPlay && !isValidBetCount)
-            {
-                BetButton.interactable = false;
-                return;
-            }
-
-            BetButton.interactable = (betAmount * (autoPlay ? betCount : 1)) <= wallet.Money;
-        }
-        else
+        if (!isValidBetAmount)
         {
             BetButton.interactable = false;
+            return;
         }
+
+        if (autoPlay && betCount == 0)
+        {
+            BetButton.interactable = betAmount <= Wallet.Instance.Money;
+            return;
+        }
+
+        BetButton.interactable = (betAmount * (autoPlay ? betCount : 1)) <= Wallet.Instance.Money;
     }
+
 
     public void DivideBet()
     {
@@ -110,12 +110,6 @@ public class PlinkoManager : MonoBehaviour
         multiplyButton.interactable = state;
         DropdownRisk.interactable = state;
         dropdownRows.interactable = state;
-    }
-
-    public void LockBetButton(bool lockState)
-    {
-        isBetLocked = lockState;
-        if (lockState) BetButton.interactable = false;
     }
     private void FormatBetAmount(string value)
     {
