@@ -79,7 +79,6 @@ public class PlinkoManager : MonoBehaviour
         BetButton.interactable = (betAmount * (autoPlay ? betCount : 1)) <= Wallet.Instance.Money;
     }
 
-
     public void DivideBet()
     {
         if (float.TryParse(BetAmountText.text, out float betAmount) && betAmount > 0)

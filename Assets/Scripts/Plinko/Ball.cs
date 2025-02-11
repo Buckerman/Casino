@@ -22,8 +22,14 @@ public class Ball : MonoBehaviour
         Vector3 worldPos = plinkoArea.TransformPoint(spawnPositionUI);
         worldPos.z = 0f;
 
-        var risk = PlinkoManager.Instance.DropdownRisk;
+        SetBallRisk();
 
+        transform.position = worldPos;
+    }
+
+    private void SetBallRisk()
+    {
+        var risk = PlinkoManager.Instance.DropdownRisk;
         //This solution prevent from switching option order
         switch (risk.options[risk.value].text)
         {
@@ -58,8 +64,6 @@ public class Ball : MonoBehaviour
         //        break;
         //}
         #endregion
-
-        transform.position = worldPos;
     }
 
     // You can adjust this value in the Inspector to control the pull strength

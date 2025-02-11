@@ -31,21 +31,7 @@ public class Histogram : MonoBehaviour
         }
 
         AnimateExistingBoxesUp();
-
-        GameObject payoutObject = ObjectPooling.Instance.GetObject(payoutBoxPrefab);
-        payoutObject.transform.SetParent(histogramArea, false);
-        payoutObject.GetComponent<Image>().color = payoutData.color;
-        payoutObject.GetComponentInChildren<TextMeshProUGUI>().text = payoutData.text + "x";
-
-        PayoutBox payoutBox = payoutObject.GetComponent<PayoutBox>();
-        payoutBox.Initialize(histogramArea);
-
-        RectTransform rectTransform = payoutObject.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = new Vector2(0, -histogramArea.rect.height / 2 - BoxSpacing / 2);
-        rectTransform.DOAnchorPosY(GetBottomPosition(), AnimationDuration)
-            .SetEase(Ease.OutQuad);
-
-        activeBoxes.Enqueue(payoutObject);
+        CreatePayoutBox(payoutData);
     }
 
     //Using Sequence
@@ -66,6 +52,23 @@ public class Histogram : MonoBehaviour
     //    }
     //]
     #endregion
+    private void CreatePayoutBox(PayoutData payoutData)
+    {
+        GameObject payoutObject = ObjectPooling.Instance.GetObject(payoutBoxPrefab);
+        payoutObject.transform.SetParent(histogramArea, false);
+        payoutObject.GetComponent<Image>().color = payoutData.color;
+        payoutObject.GetComponentInChildren<TextMeshProUGUI>().text = payoutData.text + "x";
+
+        PayoutBox payoutBox = payoutObject.GetComponent<PayoutBox>();
+        payoutBox.Initialize(histogramArea);
+
+        RectTransform rectTransform = payoutObject.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = new Vector2(0, -histogramArea.rect.height / 2 - BoxSpacing / 2);
+        rectTransform.DOAnchorPosY(GetBottomPosition(), AnimationDuration)
+            .SetEase(Ease.OutQuad);
+
+        activeBoxes.Enqueue(payoutObject);
+    }
 
     private void AnimateExistingBoxesUp()
     {
