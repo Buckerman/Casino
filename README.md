@@ -1,0 +1,1 @@
+This is a casino-themed game project developed in Unity 2D. Currently, the project features a fully functional Plinko game, inspired by the popular mechanics of Stake.com’s Plinko. The game includes dynamic features, smooth animations, and optimized performance to provide an engaging user experience.
