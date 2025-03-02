@@ -739,8 +739,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 591288638}
+        m_TargetAssemblyTypeName: BjackManager, Assembly-CSharp
         m_MethodName: DivideBet
         m_Mode: 1
         m_Arguments:
@@ -866,6 +866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591288637}
+  - component: {fileID: 591288638}
   m_Layer: 0
   m_Name: BjackManager
   m_TagString: Untagged
@@ -888,6 +889,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481589313}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &591288638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591288636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b99120e843e084c9dc9f966c6a297d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  betAmountText: {fileID: 700959327}
+  betButton: {fileID: 84876966}
+  divideButton: {fileID: 422159646}
+  multiplyButton: {fileID: 606834025}
 --- !u!1 &606834023
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,8 +988,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 591288638}
+        m_TargetAssemblyTypeName: BjackManager, Assembly-CSharp
         m_MethodName: DoubleBet
         m_Mode: 1
         m_Arguments:
@@ -1021,21 +1038,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606834023}
   m_CullTransparentMesh: 1
---- !u!115 &627014651
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: TMP_InputField
-  m_Namespace: TMPro
-  m_AssemblyName: Unity.TextMeshPro
 --- !u!1 &643774474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,7 +1358,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 700959321}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 627014651}
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
