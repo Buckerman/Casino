@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,8 +30,8 @@ public class CardGenerator : MonoBehaviour
 
         card.Initialize(_cardValue[cardText], cardText, suit);
     }
-    private Sprite RandomizeSuit() => _suits[Random.Range(0, _suits.Count)];
-    private string RandomizeValue() => _keys[Random.Range(0, _keys.Count)];
+    private Sprite RandomizeSuit() => _suits[UnityEngine.Random.Range(0, _suits.Count)];
+    private string RandomizeValue() => _keys[UnityEngine.Random.Range(0, _keys.Count)];
 
     public int CalculateHandValue(List<Card> hand)
     {

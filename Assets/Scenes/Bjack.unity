@@ -868,7 +868,6 @@ GameObject:
   m_Component:
   - component: {fileID: 591288637}
   - component: {fileID: 591288638}
-  - component: {fileID: 591288639}
   m_Layer: 0
   m_Name: BjackManager
   m_TagString: Untagged
@@ -907,23 +906,6 @@ MonoBehaviour:
   betButton: {fileID: 84876966}
   divideButton: {fileID: 422159646}
   multiplyButton: {fileID: 606834025}
---- !u!114 &591288639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591288636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 139f5c5ad69ddb04293b387ee3253ead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cardPrefab: {fileID: 3869566820019108267, guid: a6f6b25347a9ab542b8ff09da852630c, type: 3}
-  _heart: {fileID: 21300000, guid: 21d28b0bc406e4151b39e3c4153becf6, type: 3}
-  _diamond: {fileID: 21300000, guid: bf65b7d972cb142f8a27c37ad0e4ca8e, type: 3}
-  _club: {fileID: 21300000, guid: 720c1945c543a467b8d08f4e868e4bc1, type: 3}
-  _spade: {fileID: 21300000, guid: a35ba8c8113534ff6bd124253c389776, type: 3}
 --- !u!1 &606834023
 GameObject:
   m_ObjectHideFlags: 0
