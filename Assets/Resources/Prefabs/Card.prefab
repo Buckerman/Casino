@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 4016953932684308970}
   - component: {fileID: 173667489490399598}
   - component: {fileID: 1394261157396005954}
+  - component: {fileID: 1111651982777719826}
+  - component: {fileID: 6042768956919419225}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -181,6 +183,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be798ba384b5e934593b5cd4e11a10b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardText: {fileID: 5595851604018428812}
+--- !u!114 &1111651982777719826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3869566820019108267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4eaf541e4de954c9afc29214f7fbed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heart: {fileID: 21300000, guid: 21d28b0bc406e4151b39e3c4153becf6, type: 3}
+  _diamond: {fileID: 21300000, guid: bf65b7d972cb142f8a27c37ad0e4ca8e, type: 3}
+  _club: {fileID: 21300000, guid: 720c1945c543a467b8d08f4e868e4bc1, type: 3}
+  _spade: {fileID: 21300000, guid: a35ba8c8113534ff6bd124253c389776, type: 3}
+  _suitSpriteRenderer: {fileID: 7501605481523035103}
+--- !u!114 &6042768956919419225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3869566820019108267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c523bca5519ad641a54eaf8cbd79b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cardText: {fileID: 5595851604018428812}
