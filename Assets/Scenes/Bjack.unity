@@ -854,6 +854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 591288637}
+  - {fileID: 1664949116}
   - {fileID: 692020569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -915,10 +916,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 591288636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c523bca5519ad641a54eaf8cbd79b16, type: 3}
+  m_Script: {fileID: 11500000, guid: 139f5c5ad69ddb04293b387ee3253ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardText: {fileID: 0}
+  _cardPrefab: {fileID: 3869566820019108267, guid: a6f6b25347a9ab542b8ff09da852630c, type: 3}
+  _heart: {fileID: 21300000, guid: 21d28b0bc406e4151b39e3c4153becf6, type: 3}
+  _diamond: {fileID: 21300000, guid: bf65b7d972cb142f8a27c37ad0e4ca8e, type: 3}
+  _club: {fileID: 21300000, guid: 720c1945c543a467b8d08f4e868e4bc1, type: 3}
+  _spade: {fileID: 21300000, guid: a35ba8c8113534ff6bd124253c389776, type: 3}
 --- !u!1 &606834023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,6 +2361,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649538946}
   m_CullTransparentMesh: 1
+--- !u!1 &1664949115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664949116}
+  - component: {fileID: 1664949117}
+  m_Layer: 0
+  m_Name: BjackGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1664949116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664949115}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 481589313}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664949117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664949115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139f5c5ad69ddb04293b387ee3253ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cardPrefab: {fileID: 3869566820019108267, guid: a6f6b25347a9ab542b8ff09da852630c, type: 3}
+  _heart: {fileID: 21300000, guid: 21d28b0bc406e4151b39e3c4153becf6, type: 3}
+  _diamond: {fileID: 21300000, guid: bf65b7d972cb142f8a27c37ad0e4ca8e, type: 3}
+  _club: {fileID: 21300000, guid: 720c1945c543a467b8d08f4e868e4bc1, type: 3}
+  _spade: {fileID: 21300000, guid: a35ba8c8113534ff6bd124253c389776, type: 3}
 --- !u!1 &1697667637
 GameObject:
   m_ObjectHideFlags: 0
